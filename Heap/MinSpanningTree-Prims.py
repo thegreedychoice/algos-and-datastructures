@@ -1,4 +1,4 @@
-from Heap.MinPriorityQueue import MinPriorityQueue
+from Heap.MinPriorityQueue import MinPriorityQueue, Node
 
 class EdgeNode:
     """
@@ -94,8 +94,38 @@ class Graph:
         print()
 
 
-def prims(g, pq):
-    pass
+def prims(N, g, startVertex):
+    minCost  = 0
+    marked = [None for val in range(0, N+1)]
+    start = Node(startVertex, 0)
+
+    pq = MinPriorityQueue(N)
+    pq.insert(start)
+
+    while not pq.isEmpty():
+        u = pq.extractMin()
+        u_vertex = u.key
+        u_weight = u.value
+
+        if marked[u_vertex]:
+            continue
+
+        minCost += u_weight
+        marked[u_vertex] = True
+
+        edges_u = g.edges[u_vertex]
+
+        while edges_u is not None:
+            v_vertex = edges_u.y
+            v_weight = edges_u.weight
+
+            if marked[v_vertex] is None:
+                pq.insert(Node(v_vertex, v_weight))
+
+            edges_u = edges_u.next
+
+
+    return minCost
 
 
 if __name__ == "__main__":
@@ -104,7 +134,9 @@ if __name__ == "__main__":
     g.read_graph(n, m)
     g.print_graph()
 
+    print(prims(n,g,1))
 
+    """
 
     k = int(input("Enter k: "))
     pq = MinPriorityQueue(n)
@@ -122,3 +154,4 @@ if __name__ == "__main__":
         print(max)
         print()
         k -= 1
+    """

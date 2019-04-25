@@ -68,7 +68,8 @@ class MinPriorityQueue:
 
 
     def extractMin(self):
-        min = self.peek().value
+        item = self.peek()
+        min = item.value
         # update the index of removed min value in the map
 
         if min in self.map:
@@ -83,7 +84,7 @@ class MinPriorityQueue:
         self.items[self.size - 1] = None
         self.size -= 1
         self.heapifyDown()
-        return min
+        return item
 
     def heapifyDown(self):
         index = 0
