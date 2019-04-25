@@ -1,4 +1,7 @@
 class MaxHeap:
+    """
+    Binary Heap
+    """
     def __init__(self, N):
         self.capacity = N
         self.size = 0
@@ -47,7 +50,7 @@ class MaxHeap:
         if not self.isEmpty():
             return self.items[0]
         else:
-            raise Exception('Array items is empty: {0}'.format(x))
+            raise Exception('Array items is empty')
 
     def swap(self, indexA, indexB):
         temp = self.items[indexA]
