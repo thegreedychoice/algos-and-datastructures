@@ -1,7 +1,4 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-
+# O(wh) time | O(n) space where n is number of results
 def riverSizes(matrix):
     if not (len(matrix) or len(matrix[0])):
         return []

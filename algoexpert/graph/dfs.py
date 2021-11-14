@@ -1,3 +1,4 @@
+# O(v+e) time | o(v) space
 class Node:
 
     def __init__(self, name):
